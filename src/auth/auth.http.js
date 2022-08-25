@@ -15,7 +15,7 @@ const login = (req, res) => {
 
     if(response){
 
-        const token = jwt.sign({      //? manejamos la información para generar el token
+        const token = jwt.sign({      //! manejamos la información para generar el token
             id: response.id,
             email: response.email,
             rol: response.rol

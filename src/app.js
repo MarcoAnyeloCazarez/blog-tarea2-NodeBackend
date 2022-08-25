@@ -6,6 +6,7 @@ require('./middlewere/auth.middleware')(passport)     //esta manera se usa para 
 //* Archivos derutas
 const userRouter = require('./users/users.router').router
 const authRouter = require('./auth/auth.router').router
+const postRouter = require('./posts/posts.router').router
 
 //* Configuraciones iniciales
 const app = express()
@@ -20,6 +21,8 @@ app.get('/', (req, res) => {     //!peticion a la ruta raiz
 app.use('/api/v1/users', userRouter)     // el userRouter es un middlewere, es una funcion que e lleva a cabo dentro de otra
 //app.use('/api/v1/users/:id', userRouter)
 app.use('/api/v1/auth', authRouter)
+
+app.use('/api/v1/posts', postRouter)
 
 // passport.authenticate('jwt', {session: false}), 
     //(req, res) => {
