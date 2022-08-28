@@ -6,7 +6,7 @@ const { loginUser } = require("./auth.controllers")
 
 const login = (req, res) => {
     const data = req.body
-
+ 
     if(!data.email || !data.password){
         return res.status(400).json({message: 'Missing data'})
     }
@@ -21,7 +21,7 @@ const login = (req, res) => {
             rol: response.rol
         }, 'academlo')
 
-        return  res.status(200).json({message: 'Tus credenciales son correctas', token})   //? le debemos pasar el token en este punto
+        return  res.status(200).json({message: 'Tus credenciales son correctas', token: token})   //? le debemos pasar el token en este punto
     }else{
         return res.status(400).json({message: 'Invalid credentials'})
     }

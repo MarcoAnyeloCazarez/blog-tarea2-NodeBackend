@@ -26,7 +26,7 @@ const registerUser = (req, res) => {
     if(!body){
         return res.status(400).json({message: 'El body no existe'})
     }
-    if(!body.first_name || !body.last_name || !body.email || !body.password || !body.birthday_date || !body.country){
+    if(!body.first_name || !body.last_name || !body.email || !body.password || !body.birthday_date || !body.country || !body.phone){
             return res.status(400).json({
                 body: {body},
                 message: 'All fields must be completed', 
@@ -36,7 +36,8 @@ const registerUser = (req, res) => {
                     email: 'example@example.com',
                     password: 'password',
                     birthday_date: 'DD/MM/YYYY',
-                    country: 'string'
+                    country: 'string',
+                    phone: 'string'
             } })
         }else{
             const data = userControllers.createUser(body)
@@ -133,7 +134,7 @@ const editMyUser = (req, res) => {
     }  
 }
 
-
+//para hacer login
 const getUser = (req, res) => {
     const email = req.user.email
     const data = userControllers.getUserByEmail(email)

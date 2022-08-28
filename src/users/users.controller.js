@@ -2,13 +2,13 @@ const uuid = require('uuid')
 const { hashPassword, comparePassword } = require('../utils/crypt')   //! importamos las funciones para encriptar y desencriptar, hechas en el archivo crypts
 
 const userDB = [{
-    "id": "ed025bbb-5fbe-4ddf-9670-e43ce9d80c52",
-    "first_name": "Anayelo",
+    "id": "e7189119-8f6c-4174-8425-201d178bb231",
+    "first_name": "Anyelo",
     "last_name": "Cazarez",
-    "email": "anyelocba7@gmail.com",
-    "password": "$2b$10$J8MM4kUcqvaSIxoOmUobHeVttKsjhLCgyjDQ3kPNuq9CCc7O/WeP2",
-    "phone": "",
-    "birthday_date": "16/03/1994",
+    "email": "anyelocaba7@gmail.com",
+    "password": "$2b$10$lWGgHOA8gqEA/Yn6Wz8DM.51ng0HS.gcz5IWf6G.7Sa.xqg4.wOOK",
+    "phone": "4435796418",
+    "birthday_date": "02/03/1994",
     "rol": "normal",
     "profile_image": "",
     "country": "México",

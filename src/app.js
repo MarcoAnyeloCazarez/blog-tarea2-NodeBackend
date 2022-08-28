@@ -7,8 +7,8 @@ require('./middlewere/auth.middleware')(passport)     //esta manera se usa para 
 const userRouter = require('./users/users.router').router
 const authRouter = require('./auth/auth.router').router
 const postRouter = require('./posts/posts.router').router
-
-//* Configuraciones iniciales
+ 
+//* Configuraciones inicialess
 const app = express()
 app.use(express.json())  //Esta configuración es para habilitar el req.body en el archivo http.js
 

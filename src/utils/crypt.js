@@ -11,5 +11,5 @@ const comparePassword = (plainPassword, hashedPassword) => {    //! para compara
 
 module.exports = {
     hashPassword,
-    comparePassword
+    comparePassword 
 }

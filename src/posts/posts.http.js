@@ -1,5 +1,7 @@
 const { json } = require('express')
 const postsControllers = require('./posts.controllers')
+const passport = require('passport')
+require('../middlewere/auth.middleware')(passport)
 
 const getAllPost = (req, res) => {
     const data = postsControllers.getAllPosts()
@@ -8,7 +10,8 @@ const getAllPost = (req, res) => {
 
 const newPost = (req, res) => {
     const bodyData = req.body
-    console.log(bodyData)
+    const user_id = req.user.id    //obtengo el id de la informacion generada por passport en req cuando decodifica el toquen 
+    console.log(user_id)
     if(!bodyData){
         return res.status(400).json({message: 'Body doesnt exist'})
     }
@@ -19,12 +22,12 @@ const newPost = (req, res) => {
         fields: {
 	        "title": "string",
 	        "content":"string",
-	        "header_image": "url_to_img",
+	        "header_image": "string",
         }
         }) 
     }else {
-        const newPost = postsControllers.createNewPost(bodyData)
-        res.status(201).json({message: 'User created'})
+        const newPost = postsControllers.createNewPost(bodyData, user_id)
+        res.status(201).json({message: 'Posts created'})
         return newPost
     }
 }

@@ -1,6 +1,6 @@
 //!  En este archivo se usan los vervos y los servicios que cada uno usará, se hara referencia a las funciones del archivo http.js
 
-const router = require("express").Router()
+const router = require("express").Router()  
 const passport = require('passport')
 require('../middlewere/auth.middleware')(passport)
 
@@ -11,8 +11,8 @@ router.route('/') //  /api/v1/users
     .post(usersServices.registerUser)
 
 router.route('/me')
-    .put(passport.authenticate('jwt',{session: false}),usersServices.editMyUser)      //! De esta anera se protege la rura, solo se puede entrar si se generó algun token
     .get(passport.authenticate('jwt',{session: false}),usersServices.getUser)
+    .put(passport.authenticate('jwt',{session: false}),usersServices.editMyUser)      //! De esta anera se protege la rura, solo se puede entrar si se generó algun token
     .delete(passport.authenticate('jwt',{session: false}),usersServices.removeUser)
     
 

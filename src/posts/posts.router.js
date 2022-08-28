@@ -3,10 +3,10 @@ const passport = require('passport')
 require('../middlewere/auth.middleware')(passport)
 
 const postsServices = require('./posts.http')
-
-router.route('/')  //      /api/v1/posts
+  
+router.route('/')  //      /api/v1/posts 
     .get(postsServices.getAllPost)
-    .post(postsServices.newPost)
+    .post(passport.authenticate('jwt',{session: false}),postsServices.newPost)
 
 
 router.route('/:id')

@@ -9,4 +9,4 @@ const authServices = require('./auth.http')
   //! Para hacer loging se necesita hacer peticiones de tipo post porque no necesita un id para recibirla o pedirla
 router.post('/login', authServices.login)  //! Usamos esta forma ya que solo  usareos un solo vervo en este caso
 
-exports.router = router
+exports.router = router 

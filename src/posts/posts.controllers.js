@@ -1,5 +1,7 @@
 const uuid = require('uuid')
-const postsDB = [
+
+
+const postsDB = [ 
     {
         id: "f2d52a50-debb-441a-a5f2-787dfa3fb1c0",
         title: "primer Post desde Thunder",
@@ -22,13 +24,13 @@ const getPostsByUserId = (userId) => {
     }
 }
 
-const createNewPost = (data) => {
+const createNewPost = (bodyData, user_id) => {
     const newPost = {
         id: uuid.v4(),
-        title: data.title,
-        content: data.content,
-        header_image: data.header_image,
-        user_id: data.user_id,
+        title: bodyData.title,
+        content: bodyData.content,
+        header_image: bodyData.header_image,
+        user_id: user_id,
         published: true
     }
     postsDB.push(newPost)
