@@ -62,14 +62,34 @@ const getPostsByUser = (userId) => {
 
 const getSpecificPostsByUser = (userID, postID) => {
     const posts = postsDB.filter((posts) => posts.user_id === userID)
-    console.log(posts)
+    //console.log(posts)
     const specificPost = posts.filter((post) => post.id === postID) 
-    console.log(specificPost)
+    //console.log(specificPost)
     if(specificPost.length >0){
         return specificPost
     }else {
         return null
     }
+}
+
+const editSpecificPost = (userID, postID, data) => {
+    const specificPost = getSpecificPostsByUser(userID, postID)
+    const postIndex = postsDB.findIndex(item => item.id == postID)
+    console.log(postIndex)
+    if(postIndex !== -1){
+        postsDB[postIndex] = {
+            id: specificPost.id,
+            title: data.title,
+            content: data.content,
+            header_image: data.header_image,
+            user_id: specificPost.user_id,
+            published: true
+        }
+        return specificPost
+    }else{
+        return null
+    }
+    
 }
 
 
@@ -78,6 +98,7 @@ module.exports = {
     getAllPosts,
     createNewPost,
     getPostsByUser,
-    getSpecificPostsByUser
+    getSpecificPostsByUser,
+    editSpecificPost
 }
  
