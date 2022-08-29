@@ -92,6 +92,16 @@ const editSpecificPost = (userID, postID, data) => {
     
 }
 
+const deletePost = (postID) => {
+    const postIndex = postsDB.findIndex(item => item.id == postID)
+    if(postIndex !== -1){
+        postsDB.splice(postIndex, 1)
+        return true
+    }else {
+        return false
+    }
+}
+
 
 
 module.exports = {
@@ -99,6 +109,7 @@ module.exports = {
     createNewPost,
     getPostsByUser,
     getSpecificPostsByUser,
-    editSpecificPost
+    editSpecificPost,
+    deletePost
 }
  

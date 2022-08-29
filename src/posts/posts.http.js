@@ -90,6 +90,16 @@ const editPost = (req, res) => {
     }
 }
 
+const removePost = (req, res) => {
+    const postID = req.params.id
+    const data = postsControllers.deletePost(postID)
+    if(!postID){
+        return res.status(400).json({message: 'invalid credentials or ID'})
+    }else {
+        return res.status(204).json({message: 'POST DELETED'})
+    }
+}
+
 
 
 
@@ -99,5 +109,6 @@ module.exports = {
     getOnePost,
     postsByUser,
     getSpecificPostByUser,
-    editPost
+    editPost,
+    removePost
 }

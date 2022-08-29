@@ -22,6 +22,7 @@ router.route('/me/posts')
 router.route('/me/posts/:id')
     .post(passport.authenticate('jwt',{session: false}),postsServices.getSpecificPostByUser)
     .put(passport.authenticate('jwt', {session: false}), postsServices.editPost)
+    .delete(passport.authenticate('jwt',{session: false}),postsServices.removePost)
 
 router.route('/:id')
     .get(usersServices.getUsersById)
