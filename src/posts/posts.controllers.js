@@ -53,10 +53,21 @@ const getPostById = (id) => {
 
 const getPostsByUser = (userId) => {
     const posts = postsDB.filter(post => postsDB.user_id === userId)
-    console.log("estoy en get posts by user")
     if(posts.length > 0){
         return posts
     }else{
+        return null
+    }
+}
+
+const getSpecificPostsByUser = (userID, postID) => {
+    const posts = postsDB.filter((posts) => posts.user_id === userID)
+    console.log(posts)
+    const specificPost = posts.filter((post) => post.id === postID) 
+    console.log(specificPost)
+    if(specificPost.length >0){
+        return specificPost
+    }else {
         return null
     }
 }
@@ -66,6 +77,7 @@ const getPostsByUser = (userId) => {
 module.exports = {
     getAllPosts,
     createNewPost,
-    getPostsByUser
+    getPostsByUser,
+    getSpecificPostsByUser
 }
  

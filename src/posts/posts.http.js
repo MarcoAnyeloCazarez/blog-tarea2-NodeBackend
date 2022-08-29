@@ -11,7 +11,7 @@ const getAllPost = (req, res) => {
 const newPost = (req, res) => {
     const bodyData = req.body
     const user_id = req.user.id    //obtengo el id de la informacion generada por passport en req cuando decodifica el toquen 
-    console.log(user_id)
+    console.log("User id: ",user_id)
     if(!bodyData){
         return res.status(400).json({message: 'Body doesnt exist'})
     }
@@ -52,6 +52,20 @@ const postsByUser = (req, res) => {
     }
 }
 
+const getSpecificPostByUser = (req, res) => {
+    const userID = req.user.id
+    console.log("User id: ", userID)
+    const postID = req.params.id
+    console.log("Post id: ", postID)
+    if(!userID || !postID){
+        return res.status(404).json('Invalid post ID')
+    }else {
+        const post = postsControllers.getSpecificPostsByUser(userID, postID)
+        return res.status(200).json(post)
+
+    }
+}
+
 
 
 
@@ -59,5 +73,6 @@ module.exports = {
     getAllPost,
     newPost,
     getOnePost,
-    postsByUser
+    postsByUser,
+    getSpecificPostByUser
 }

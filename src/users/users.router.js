@@ -17,13 +17,19 @@ router.route('/me')
     .delete(passport.authenticate('jwt',{session: false}),usersServices.removeUser)
 
 router.route('/me/posts')
-    .get(passport.authenticate('jwt', {session: false}), postsServices.postsByUser)
+    .get(passport.authenticate('jwt',{session: false}),postsServices.postsByUser)
 
+router.route('/me/posts/:id')
+    .post(passport.authenticate('jwt',{session: false}),postsServices.getSpecificPostByUser)
 
 router.route('/:id')
     .get(usersServices.getUsersById)
     .delete(usersServices.remove)
     .put(usersServices.edit)
+
+
+
+
     
 exports.router = router
 
