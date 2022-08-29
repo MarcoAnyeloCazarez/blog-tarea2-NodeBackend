@@ -5,6 +5,7 @@ const passport = require('passport')
 require('../middlewere/auth.middleware')(passport)
 
 const usersServices = require('./users.http')
+const postsServices = require('../posts/posts.http')
 
 router.route('/') //  /api/v1/users
     .get(usersServices.getAll)
@@ -14,7 +15,10 @@ router.route('/me')
     .get(passport.authenticate('jwt',{session: false}),usersServices.getUser)
     .put(passport.authenticate('jwt',{session: false}),usersServices.editMyUser)      //! De esta anera se protege la rura, solo se puede entrar si se generó algun token
     .delete(passport.authenticate('jwt',{session: false}),usersServices.removeUser)
-    
+
+router.route('/me/posts')
+    .get(passport.authenticate('jwt', {session: false}), postsServices.postsByUser)
+
 
 router.route('/:id')
     .get(usersServices.getUsersById)

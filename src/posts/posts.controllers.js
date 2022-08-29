@@ -7,6 +7,7 @@ const postsDB = [
         title: "primer Post desde Thunder",
         content: "Mi primer post",
         header_image: "hiuhciuhr",
+        user_id: "e7189119-8f6c-4174-8425-201d178bb231",
         published: true
     }
 ]
@@ -15,6 +16,7 @@ const getAllPosts = () => {
     return postsDB
 }
 
+/*
 const getPostsByUserId = (userId) => {
     const posts = postsDB.filter(array => array.user_id === userId)
     if(posts.length > 0){
@@ -23,6 +25,7 @@ const getPostsByUserId = (userId) => {
         return 'no hay posts aún'
     }
 }
+*/
 
 const createNewPost = (bodyData, user_id) => {
     const newPost = {
@@ -37,6 +40,7 @@ const createNewPost = (bodyData, user_id) => {
     return(newPost)
 }
 
+/*
 const getPostById = (id) => {
     const data = postsDB.filter(item => item.id === id)
     if(data.length > 0){
@@ -45,9 +49,11 @@ const getPostById = (id) => {
         return null
     }
 }
+*/
 
 const getPostsByUser = (userId) => {
-    const posts = postsDB.filter(post => post.user_id === userId)
+    const posts = postsDB.filter(post => postsDB.user_id === userId)
+    console.log("estoy en get posts by user")
     if(posts.length > 0){
         return posts
     }else{
@@ -56,11 +62,10 @@ const getPostsByUser = (userId) => {
 }
 
 
+
 module.exports = {
     getAllPosts,
-    getPostsByUserId,
     createNewPost,
-    getPostById,
     getPostsByUser
 }
  

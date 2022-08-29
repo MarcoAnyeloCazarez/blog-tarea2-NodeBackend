@@ -3,6 +3,7 @@
 //Imortamos los controladores
 const { json } = require('express')
 const userControllers = require('./users.controller')
+const postsControllers = require('../posts/posts.controllers')
 
 const getAll = (req, res) => {
     const data = userControllers.getAllUsers()
@@ -156,6 +157,7 @@ const removeUser = (req, res) => {
         return res.status(400).json({message: 'invalid ID'})
     }
 }
+
 
 
 

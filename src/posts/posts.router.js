@@ -8,6 +8,8 @@ router.route('/')  //      /api/v1/posts
     .get(postsServices.getAllPost)
     .post(passport.authenticate('jwt',{session: false}),postsServices.newPost)
 
+router.route('/me/posts')
+    .get(passport.authenticate('jwt', {session: false}), postsServices.postsByUser)
 
 router.route('/:id')
     .get(postsServices.getOnePost)

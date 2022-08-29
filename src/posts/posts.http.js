@@ -43,18 +43,21 @@ const getOnePost = (req, res) => {
 }
 
 const postsByUser = (req, res) => {
-    const userId = req.params.user_id
-    const posts = postsControllers.getPostsByUserId(userId)
+    const userId = req.user.user_id
+    const posts = postsControllers.getPostsByUser(userId)
     if(!posts){
-        res.status(404).json({message: 'That user dont have posts yet or does not exist'})
+        return res.status(404).json({message: 'That user dont have posts yet or does not exist'})
     }else {
-        res.status(200).json(posts)
+        return res.status(200).json(posts)
     }
 }
+
+
 
 
 module.exports = {
     getAllPost,
     newPost,
-    getOnePost
+    getOnePost,
+    postsByUser
 }
